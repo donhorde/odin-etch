@@ -18,12 +18,10 @@ function createSquare(rowLength) {
 function createGrid(input) {
   resetGrid();
   let rowLength = Math.floor(input);
-  if (rowLength <= 0) {
+  if ((rowLength <= 0) || (typeof(rowLength) !== "number")) {
     rowLength = 8;
   } else if (rowLength >= 100) {
     rowLength = 100;
-  } else if (typeof(rowLength) !== "number") {
-    rowLength = 8;
   };
   for (let i=0; i<(rowLength*rowLength); i++) {
     createSquare(rowLength);
@@ -35,7 +33,6 @@ function changeColor(event) {
   if (!hoveredSquare.classList.contains('changed')){
     hoveredSquare.classList.add('changed');
   };
-  /* if (hoveredSquare.) */
 }
 
 createGrid(8);
