@@ -1,6 +1,10 @@
 const gridButton = document.getElementById('gridButton');
 const inputField = document.getElementById('inputField');
 const gridContainer = document.querySelector('.grid');
+const documentBody = document.querySelector('body');
+
+const styleElement = document.createElement('style');
+documentBody.appendChild(styleElement);
 
 function resetGrid() {
   while (gridContainer.firstChild) {
@@ -11,7 +15,12 @@ function resetGrid() {
 function createSquare(rowLength) {
   const newSquare = document.createElement('div');
   newSquare.classList.add('square');
-  newSquare.setAttribute('style', `width:${(1/rowLength)*100}%; height:${(1/rowLength)*100}%`);
+  styleElement.innerHTML = `.square {
+    width: ${(1/rowLength)*100}%;
+    height: ${(1/rowLength)*100}%;
+    border: 0.1px solid rgba(192,192,192,0.15);
+    box-sizing: border-box;
+  }`;
   gridContainer.appendChild(newSquare);
 }
 
